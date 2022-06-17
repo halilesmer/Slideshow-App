@@ -30,7 +30,7 @@ function Slides({ slides }) {
                     onClick={HandleCountPrev}>Prev
                 </button>
                 <button
-                    disabled={count === 4}
+                    disabled={count === slides.length-1}
                     data-testid="button-next" className="small"
                     onClick={HandleCountNext}>Next
                 </button>
