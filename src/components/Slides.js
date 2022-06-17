@@ -21,16 +21,19 @@ function Slides({ slides }) {
     return (
         <div>
             <div id="navigation" className="text-center">
-                <button data-testid="button-restart" className="small outlined"
+                <button disabled={count===0} data-testid="button-restart" className="small outlined"
                     onClick={() => setCount(0)}
                 >Restart</button>
                 <button
+                disabled={count===0}
                     data-testid="button-prev" className="small"
                     onClick={HandleCountPrev}
 
                 >Prev
                 </button>
-                <button data-testid="button-next" className="small"
+                <button
+                 disabled={count===4}
+                  data-testid="button-next" className="small"
                     onClick={HandleCountNext}>Next</button>
             </div>
 
