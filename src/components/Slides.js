@@ -1,17 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Slides({slides}) {
-
+function Slides({ slides }) {
+    const [count, setCount] = useState(0)
+    console.log('count', count)
+    const HandleCountNext = () => {
+        if (count === 4) {
+            setCount(4)
+        } else {
+            setCount(count + 1)
+        }
+    }
+    const HandleCountPrev =()=>{
+        if (count===0) {
+            setCount(0)
+        } else{
+            setCount( count -1)
+        }
+        
+    }
     return (
         <div>
             <div id="navigation" className="text-center">
-                <button data-testid="button-restart" className="small outlined">Restart</button>
-                <button data-testid="button-prev" className="small">Prev</button>
-                <button data-testid="button-next" className="small">Next</button>
+                <button data-testid="button-restart" className="small outlined"
+                    onClick={() => setCount(0)}
+                >Restart</button>
+                <button
+                    data-testid="button-prev" className="small"
+                    onClick={HandleCountPrev}
+
+                >Prev
+                </button>
+                <button data-testid="button-next" className="small"
+                    onClick={HandleCountNext}>Next</button>
             </div>
+
             <div id="slide" className="card text-center">
-                <h1 data-testid="title">Slide Title Here</h1>
-                <p data-testid="text">Slide Text Here</p>
+                <h1 data-testid="title">{slides[count].title}</h1>
+                <p data-testid="text">{slides[count].text}</p>
+
+
             </div>
         </div>
     );
